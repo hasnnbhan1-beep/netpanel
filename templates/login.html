@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تسجيل الدخول - لوحة تحكم الشبكة</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+    background: linear-gradient(135deg, #0a1526 0%, #1a2942 100%);
+    color: #e6f1ff;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .login-box {
+    background: #13233d;
+    border-radius: 16px;
+    padding: 40px 30px;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 20px 60px rgba(0,0,0,.5);
+    border: 1px solid #1e3a5f;
+    text-align: center;
+  }
+  .logo {
+    font-size: 3rem;
+    margin-bottom: 10px;
+  }
+  h1 {
+    color: #4fd1c5;
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .subtitle {
+    color: #7aa7c7;
+    font-size: .85rem;
+    margin-bottom: 25px;
+  }
+  input[type="password"] {
+    width: 100%;
+    padding: 14px 16px;
+    background: #1b2f4d;
+    color: #e6f1ff;
+    border: 2px solid #2c537f;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: inherit;
+    margin-bottom: 16px;
+    outline: none;
+    transition: all .3s;
+    text-align: center;
+    letter-spacing: 2px;
+  }
+  input[type="password"]:focus {
+    border-color: #4fd1c5;
+    box-shadow: 0 0 0 3px rgba(79,209,197,.15);
+  }
+  button {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #4fd1c5, #38b2ac);
+    color: #0a1526;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all .2s;
+    font-family: inherit;
+  }
+  button:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(79,209,197,.3); }
+  button:active { transform: translateY(0); }
+  .error {
+    background: #4a1e2e;
+    color: #ff8a9e;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    font-size: .9rem;
+    border: 1px solid #8b2c4a;
+  }
+  .footer {
+    color: #4a6c8f;
+    font-size: .75rem;
+    margin-top: 24px;
+  }
+</style>
+</head>
+<body>
+  <div class="login-box">
+    <div class="logo">🔐</div>
+    <h1>لوحة تحكم الشبكة</h1>
+    <p class="subtitle">أدخل كلمة السر للمتابعة</p>
+
+    {% if error %}
+      <div class="error">{{ error }}</div>
+    {% endif %}
+
+    <form method="post" action="/login">
+      <input type="password" name="password" placeholder="••••••••" autofocus required>
+      <button type="submit">🔓 تسجيل الدخول</button>
+    </form>
+
+    <div class="footer">FastAPI + Jinja2 • آمن بتشفير الجلسات</div>
+  </div>
+</body>
+</html>
